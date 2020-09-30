@@ -1,7 +1,11 @@
 ---
 - name: my first play
   hosts: web
-  tasks:
+  tasks: 
+    - name: ping
+      ping:
+    - name: show hostname
+      command: hostname
     - name: install Apache web server
       yum:
         name: httpd
