@@ -3,4 +3,4 @@
   tasks:
     - name: get facts
       debug:
-        msg: "{{ hostvars.web2.ansible_facts.eth1.ipv4.address }} "
+        msg: " {{ ansible_all_ipv4_addresses.1 }} is the IP address of {{ansible_hostname}}"
