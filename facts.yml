@@ -1,0 +1,5 @@
+- hosts: web1
+  tasks:
+      name: get facts
+      debug:
+        msg: "just a static message"
