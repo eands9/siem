@@ -1,5 +1,6 @@
-- hosts: web1
+- hosts: all
+  gather_facts: true
   tasks:
-    -name: get facts
-     debug:
-       msg: "just a static message"
+    - name: get facts
+      debug:
+        msg: "{{ hostvars.web2.ansible_facts.eth1.ipv4.address }} "
