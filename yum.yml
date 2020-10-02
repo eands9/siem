@@ -1,0 +1,8 @@
+- name: ensure oswatcher is installed
+  yum:
+    name: oswatcher
+    state: present
+    update_cache: true
+
+
+         
