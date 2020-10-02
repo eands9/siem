@@ -1,8 +1,12 @@
-- name: ensure oswatcher is installed
-  yum:
-    name: oswatcher
-    state: present
-    update_cache: true
+- name: install oswatcher
+  hosts: db_vms
+  become: true
+  tasks: 
+    - name: ensure oswatcher is installed
+      yum:
+        name: oswatcher
+        state: present
+        update_cache: true
 
 
          
