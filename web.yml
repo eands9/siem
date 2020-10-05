@@ -12,3 +12,9 @@
         name: httpd
         state: started
         enabled: yes
+    - name: copy using inline content
+        content: "Hello World!"
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: 0644
