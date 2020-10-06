@@ -16,6 +16,7 @@
       copy:
         source: files/index.html
         dest: /var/www/html/index.html
+        force: yes
         owner: root
         group: root
         mode: 0644
