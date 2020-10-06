@@ -14,7 +14,7 @@
         enabled: yes
     - name: copy using inline content
       copy:
-        src: /home/ansible/siem/files/index.html
+        src: index.html
         dest: /var/www/html/index.html
         owner: root
         group: root
