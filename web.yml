@@ -19,11 +19,12 @@
         owner: root
         group: root
         mode: 0644
-        backup: yes
       loop:
-        - index.html
         - index.php
-    - name:
+    - name: remove index.html
+      file:
+      path: /var/www/html/index.html
+    - name: restart apache
       service:
         name: httpd
         state: restarted
