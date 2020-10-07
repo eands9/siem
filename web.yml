@@ -23,3 +23,7 @@
       loop:
         - index.html
         - index.php
+    - name:
+      services:
+        name: httpd
+        state: restarted
