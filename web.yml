@@ -23,8 +23,8 @@
         - index.php
     - name: remove index.html
       file:
-      path: /var/www/html/index.html
-      state: absent
+       path: /var/www/html/index.html
+       state: absent
     - name: restart apache
       service:
         name: httpd
