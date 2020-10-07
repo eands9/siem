@@ -1,4 +1,4 @@
-- hosts: web1
+- hosts: web2
   vars:
     fruits: [strawberry, pomegrenade, cherry, plum ,apple ,orange, Watermelon]
   tasks:
