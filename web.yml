@@ -24,6 +24,6 @@
         - index.html
         - index.php
     - name:
-      services:
+      service:
         name: httpd
         state: restarted
