@@ -4,12 +4,9 @@
   tasks: 
     - name: install apache
       yum:
-        name: "{{ item }}"
+        name: httpd, php
         state: present
         update_cache: true
-      with_items:
-        - httpd
-        - php
     - name: start apache server
       service:
         name: httpd
