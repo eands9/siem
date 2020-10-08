@@ -6,4 +6,4 @@
     - name: adding line to 
       lineinfile:
         path: /tmp/testfile
-        line: 'testing 1 2 5'
+        line: 'testing 1 2 3'
