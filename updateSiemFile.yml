@@ -1,9 +1,9 @@
+# Add a line to a file if it does not exist, without passing regexp
 - name: add a line
   hosts: db_vm
   become: true
   tasks:
-    - name: adding line to db_vm
+    - name: adding line to 
       lineinfile:
-        path: /usr/local/ncpa/etc/ncpa.cfg.d/processes.cfg
-        line: '%HOSTNAME%|__Linux__Service__CRITICAL__oswatcher = /plugins/cmas_check_process.sh/oswatcher'
-        backup: yes
+        path: /tmp/testfile
+        line: 'testing 1 2 5'
