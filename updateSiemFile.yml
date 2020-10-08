@@ -1,7 +1,9 @@
 # Add a line to a file if it does not exist, without passing regexp
-- name: common tasks
+- name: update testfile
   hosts: all
   become: true
   tasks:
-    path: /tmp/testfile
-    line: 'testing 1 2 3'
+    - name: adding line to testfile
+      lineinfile:
+        path: /tmp/testfile
+        line: 'testing 1 2 3'
