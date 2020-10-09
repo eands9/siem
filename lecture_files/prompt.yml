@@ -3,6 +3,8 @@
   vars_prompt:
   - name: "version"
     prompt: "Which version do you want to install?"
+    private: no
+    default: "2.4.6"
   tasks:
   - name: Ansible prompt example.
     debug:
