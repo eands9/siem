@@ -4,5 +4,5 @@
   tasks:
   - name: Ansible dictionary example
     debug:
-      msg: "{( USA)}"
+      msg: "{{ USA }}"
  
