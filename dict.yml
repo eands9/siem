@@ -1,0 +1,8 @@
+- hosts: web1
+  vars: 
+    USA: { Capital: 'Washington D.C.', Continent: 'NA', President: 'Donald Trump' }
+  tasks:
+  - name: Ansible dictionary example
+    debug:
+      msg: "{( USA)}"
+ 
