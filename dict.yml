@@ -4,5 +4,8 @@
   tasks:
   - name: Ansible dictionary example
     debug:
-      msg: "{{ USA }}"
+      msg: "{{ USA.President}}"
+  - name: Ansible Dictionary Example
+    debug:
+      msg: "{{ USA ('President')}}"
  
