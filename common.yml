@@ -1,6 +1,6 @@
 ---
 - name: common tasks
-  hosts: all
+  hosts: web
   become: true
   tasks:
     # - name: update/etc/hosts file
