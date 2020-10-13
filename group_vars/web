@@ -1,0 +1,2 @@
+vhost_config_file: /etc/httpd/conf.d/ansible.conf
+apache_config_file: /etc/httpd/conf/httpd.conf

@@ -15,12 +15,22 @@
     - name: copy using inline content
       copy:
         src: "{{ item}}"
-        dest: /var/www/html/
+        dest: "{{ vhost_config_file }}"
         owner: root
         group: root
         mode: 0644
-      loop:
-        - index.php
+    - name: copy vhost config
+      copy:
+        src: ansible_site.conf
+        dest: "{{ vhost_config_file }}"
+        owner: root
+        group: root
+        mode: 0644
+    - name: onfigure httpd.conf
+      lineinfile:
+        path: "{{ apache_config_file }}"
+        regexp: "^"IncludeOptional"
+        line: "IncludeOptional conf.d/*.conf"
     - name: remove index.html
       file:
        path: /var/www/html/index.html
