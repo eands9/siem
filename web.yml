@@ -15,7 +15,7 @@
     - name: copy using inline content
       copy:
         src: "{{ item }}"
-        dest: /var/www/html
+        dest: "{{document_root_path }}"
         owner: root
         group: root
         mode: 0644
@@ -35,7 +35,7 @@
         line: "IncludeOptional conf.d/*.conf"
     - name: remove index.html
       file:
-       path: /var/www/html/index.html
+       path: /var/www/html/index.php
        state: absent
     - name: restart apache
       service:
