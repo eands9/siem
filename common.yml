@@ -13,4 +13,4 @@
     debug:
     #   msg: "{{ hostvars[item].ansible_facts.ansible_default_ipv4.address }}"
     # loop: "{{ groups['web'] }}"
-      msg: ansible_facts.ansible_default_ipv4.address
+      msg: "{ansible_facts.ansible_default_ipv4.address}"
