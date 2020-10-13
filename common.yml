@@ -11,5 +11,5 @@
     #   loop: "{{ groups['all'] }}"
   - name: debug
     debug:
-      msg: "{{ hostvars[item].ansible_facts.enp0s3.ipv4.address }}"
+      msg: "{{ hostvars[item].ansible_facts.enp0s3.ipv4.address }} {{ hostvars[item].ansible_facts.hostname }}.{{ domainname }} {{ hostvars[item].ansible_facts.hostname }}"
     loop: "{{ groups['web'] }}"
