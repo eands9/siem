@@ -14,11 +14,13 @@
         enabled: yes
     - name: copy using inline content
       copy:
-        src: "{{ item}}"
-        dest: "{{ vhost_config_file }}"
+        src: "{{ item }}"
+        dest: /var/www/html
         owner: root
         group: root
         mode: 0644
+      loop:
+        - index.php
     - name: copy vhost config
       copy:
         src: ansible_site.conf
