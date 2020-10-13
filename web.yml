@@ -33,10 +33,6 @@
         path: "{{ apache_config_file }}"
         regexp: "^IncludeOptional"
         line: "IncludeOptional conf.d/*.conf"
-    - name: remove index.html
-      file:
-       path: /var/www/html/index.php
-       state: absent
     - name: restart apache
       service:
         name: httpd
