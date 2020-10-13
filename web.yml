@@ -29,7 +29,7 @@
     - name: onfigure httpd.conf
       lineinfile:
         path: "{{ apache_config_file }}"
-        regexp: "^"IncludeOptional"
+        regexp: "^IncludeOptional"
         line: "IncludeOptional conf.d/*.conf"
     - name: remove index.html
       file:
