@@ -7,7 +7,7 @@
         name: httpd
         state: present
         update_cache: true
-     - name: install packages
+    - name: install packages
       yum:
         name: php
         state: present
