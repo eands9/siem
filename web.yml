@@ -39,15 +39,15 @@
       command: httpd -t
       register: result
       ignore_errors: yes
-    - name: Rolling back - ending playbook
-      debug:
-        msg: "Configuration file is not valid. Please check that before re-running the playbook"
-      when: result is failed
     - name: remove bad virtual host configuration
       file: 
         path: "{{ vhost_config_file }}"
         state: absent
       when: result is failed
+    - name: Rolling back - ending playbook
+      fail:
+        msg: "Configuration file is not valid. Please check that before re-running the playbook"
+      when: result is failed 
     - name: configure httpd.conf
       lineinfile:
         path: "{{ apache_config_file }}"
