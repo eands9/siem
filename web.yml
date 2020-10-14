@@ -35,6 +35,8 @@
         group: root
         mode: 0644
       notify: restart apache
+    - name: check configuration validity
+      command: httpd -t
     - name: onfigure httpd.conf
       lineinfile:
         path: "{{ apache_config_file }}"
