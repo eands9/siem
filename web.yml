@@ -38,6 +38,7 @@
     - name: check configuration validity
       command: httpd -t
       register: result
+      ignore_errors: yes
     - name: Rolling back - ending playbook
       debug:
         msg: "Configuration file is not valid. Please check that before re-running the playbook"
