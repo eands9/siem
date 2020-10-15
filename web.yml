@@ -21,7 +21,6 @@
     - name: copy using inline content
       file:
         path: "{{ document_root_path }} index.php"
-        state: absent
     - name: deploy index.php
       git: 
         repo: "{{ repository }}"
