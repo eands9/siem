@@ -4,9 +4,15 @@
   tasks: 
     - name: install apache
       yum:
-        name: httpd,php
+        name: httpd
         state: present
         update_cache: true
+    - name: install packages
+      yum:
+        name: php
+        state: present
+        update_cache: true
+      notify: restart apache
     - name: start apache server
       service:
         name: httpd
@@ -28,11 +34,14 @@
         owner: root
         group: root
         mode: 0644
+      notify: restart apache
     - name: configure httpd.conf
       lineinfile:
         path: "{{ apache_config_file }}"
         regexp: "^IncludeOptional"
         line: "IncludeOptional conf.d/*.conf"
+      notify: restart apache
+  handlers: 
     - name: restart apache
       service:
         name: httpd
