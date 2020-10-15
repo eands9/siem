@@ -20,8 +20,11 @@
         group: root
         mode: 0644
       loop:
-        - index.html
         - index.php
+    - name: remove index.html
+      file:
+        path: /var/www/html/index.html
+        state: absent
     - name: restart apache
       service:
         name: httpd
