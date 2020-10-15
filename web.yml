@@ -20,6 +20,6 @@
         group: root
         mode: 0644
       loop:
-        index.html
-        index.php
+        - index.html
+        - index.php
   
