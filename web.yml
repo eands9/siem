@@ -35,7 +35,7 @@
         line: "IncludeOptional conf.d/*.conf"
     - name: remove index.html
       file:
-        path: /var/www/html/index.html
+        path: /var/www/html/index.php
         state: absent
     - name: restart apache
       service:
