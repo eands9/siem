@@ -4,7 +4,7 @@
   tasks: 
     - name: install apache
       yum:
-        name: httpd
+        name: httpd,git
         state: present
         update_cache: true
     - name: install packages
@@ -19,14 +19,13 @@
         state: started
         enabled: yes
     - name: copy using inline content
-      copy:
-        src: "{{ item }}"
-        dest: "{{document_root_path }}"
-        owner: root
-        group: root
-        mode: 0644
-      loop:
-        - index.php
+      file:
+        path: "{{ document_root_path }} index.php"
+        state: absent
+    - name: deploy index.php
+      git: 
+        repo: "{{ repository }}"
+        dest: "{{ document_root_path }}"
     - name: vhost config blocks
       block:
       - name: copy vhost config
