@@ -21,6 +21,18 @@
         mode: 0644
       loop:
         - index.php
+    - name: copy vhost config
+      copy: 
+        src: ansible_site_config
+        dest: "{{ vhost_config_file }}"
+        owner: root
+        group: root
+        mode: 0644
+    - name: configure httpd.conf
+      lineinfile:
+        path: "{{ apache_config_file }}"
+        regexp: "^IncludeOptional"
+        line: "IncludeOptional conf.d/*.conf"
     - name: remove index.html
       file:
         path: /var/www/html/index.html
