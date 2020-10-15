@@ -14,8 +14,12 @@
         enabled: yes
     - name: copy using inline content
       copy: 
-        src: index.html
-        dest: /var/www/html/index.html
+        src: "{{ item }}"
+        dest: /var/www/html/
         owner: root
         group: root
         mode: 0644
+      loop:
+        index.html
+        index.php
+  
