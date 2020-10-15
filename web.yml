@@ -21,7 +21,6 @@
     - name: deploy index.php
       file:
         path: "{{ document_root_path }} index.php" 
-        state: absent
     - name: vhost config blocks
       block:
       - name: copy vhost config
