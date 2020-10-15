@@ -23,7 +23,7 @@
         - index.php
     - name: copy vhost config
       copy: 
-        src: ansible_site_config
+        src: ansible_site.conf
         dest: "{{ vhost_config_file }}"
         owner: root
         group: root
