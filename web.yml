@@ -19,9 +19,9 @@
         state: started
         enabled: yes
     - name: deploy index.php
-      git: 
-        repo: "{{ repository }}"
-        dest: "{{ document_root_path }}"
+      file:
+        path: "{{ document_root_path }} index.php" 
+        state: absent
     - name: vhost config blocks
       block:
       - name: copy vhost config
