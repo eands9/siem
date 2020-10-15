@@ -22,4 +22,10 @@
       loop:
         - index.html
         - index.php
+    - name: restart apache
+      service:
+        name: httpd
+        state: restarted
+
+
   
