@@ -5,6 +5,6 @@
     - name: install apache
       yum:
         name: httpd
-        state: present
+        state: absent
         update_cache: true
   
