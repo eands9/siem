@@ -1,0 +1,58 @@
+- name: web servers
+  hosts: web
+  become: true
+  tasks: 
+    - name: install apache
+      yum:
+        name: httpd,git
+        state: present
+        update_cache: true
+    - name: install packages
+      yum:
+        name: php
+        state: present
+        update_cache: true
+      notify: restart apache
+    - name: start apache server
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+    - name: copy using inline content
+      copy: 
+        scr: index.html
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: 0644
+    - name: vhost config blocks
+      block:
+      - name: copy vhost config
+        copy:
+          src: ansible_site.conf
+          dest: "{{ vhost_config_file }}"
+          owner: root
+          group: root
+          mode: 0644
+        notify: restart apache
+      - name: check configuration validity
+        command: httpd -t
+      rescue: 
+      - name: remove bad virtual host configuration
+        file: 
+          path: "{{ vhost_config_file }}"
+          state: absent
+      - name: Rolling back - ending playbook
+        fail:
+          msg: "Configuration file is not valid. Please check that before re-running the playbook"
+    - name: configure httpd.conf
+      lineinfile:
+        path: "{{ apache_config_file }}"
+        regexp: "^IncludeOptional"
+        line: "IncludeOptional conf.d/*.conf"
+      notify: restart apache
+  handlers:
+    - name: restart apache
+      service:
+        name: httpd
+        state: restarted
