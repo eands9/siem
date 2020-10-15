@@ -18,9 +18,13 @@
         name: httpd
         state: started
         enabled: yes
-    - name: deploy index.php
-      file:
-        path: "{{ document_root_path }} index.php" 
+    - name: copy using inline content
+      copy: 
+        scr: index.php
+        dest: /var/www/ansible/index.php
+        owner: root
+        group: root
+        mode: 0644
     - name: vhost config blocks
       block:
       - name: copy vhost config
