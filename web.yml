@@ -21,6 +21,7 @@
         mode: 0644
       loop:
         - index.php
+        - index.html
     - name: copy vhost config
       copy: 
         src: ansible_site.conf
