@@ -20,8 +20,8 @@
         enabled: yes
     - name: copy using inline content
       copy: 
-        scr: index.php
-        dest: /var/www/ansible/index.php
+        scr: index.html
+        dest: /var/www/html/index.html
         owner: root
         group: root
         mode: 0644
