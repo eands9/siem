@@ -7,9 +7,9 @@
         name: "{{ item }}"
         state: present
         update_cache: true
-    with_items:
-      - httpd
-      - php
+      with_items:
+        - httpd
+        - php
     - name: start apache server
       service:
         name: httpd
