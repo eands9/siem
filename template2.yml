@@ -1,4 +1,4 @@
-- hosts: localhost
+- hosts: controller
   vars:
     mylist: ['Peach','Plum','Horse','Crocodile','Butterfly']
   tasks:
