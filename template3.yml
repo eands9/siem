@@ -1,0 +1,8 @@
+- hosts: localhost
+  vars:
+    logfile: /var/log/mylog.txt
+  tasks:
+  - name: Template example
+    template:
+      src: template3.j2
+      dest: /tmp/output3.txt
