@@ -39,8 +39,8 @@
       command: httpd -t
       register: result
     - name: Rolling back - ending playbook
-        fail:
-          msg: "Configuration file is not valid. Please check that before re-running the playbook"
+      debug:
+        msg: "Configuration file is not valid. Please check that before re-running the playbook"
       when: result is failed
     - name: remove bad virtual host configuration
         file: 
