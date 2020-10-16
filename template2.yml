@@ -5,4 +5,4 @@
    - name: Template Loop example
      template:
        src: template2.j2
-       dest: /tmp/output.txt
+       dest: /tmp/output2.txt
