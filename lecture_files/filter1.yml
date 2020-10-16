@@ -1,4 +1,4 @@
-- hosts: controller
+- hosts: localhost
   vars:
     myvariable: 6.27
   tasks:
