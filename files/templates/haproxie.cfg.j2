@@ -21,6 +21,6 @@ frontend  main
 backend servers
     balance     roundrobin
 {% for item in groups['web'] %}
-    server {{ hostvars[item].ansible_facts.hostname }} {{ hostvars[item].ansible_facts.eth1.ipv4.address }}:80 weight {{ hostvars[item].haproxy_backend_weight }} check port 80 inter {{ hostvars[item].check_interval }}
+    server {{ hostvars[item].ansible_facts.hostname }} {{ hostvars[item].ansible_facts.enp0s3.ipv4.address }}:80 weight {{ hostvars[item].haproxy_backend_weight }} check port 80 inter {{ hostvars[item].check_interval }}
 {% endfor %}
     option httpchk HEAD /index.php HTTP/1.0
