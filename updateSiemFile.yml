@@ -7,3 +7,5 @@
       lineinfile:
         path: /tmp/testfile
         line: 'testing 1 2 4'
+        state: present
+        backup: yes
