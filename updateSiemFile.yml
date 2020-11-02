@@ -1,6 +1,6 @@
 # Add a line to a file if it does not exist, without passing regexp
 - name: add a line
-  hosts: web1
+  hosts: web
   become: true
   tasks:
     - name: adding line to 
