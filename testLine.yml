@@ -7,9 +7,9 @@
         path: /tmp/testfile
         line: '{{ item }}'
       with_items:
-        - 'Orange'
-        - 'Apple'
-        - 'Banana' 
+      - 'Orange'
+      - 'Apple'
+      - 'Banana' 
         state: present
         backup: yes
 
