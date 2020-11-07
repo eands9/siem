@@ -1,0 +1,16 @@
+- name: add a line
+  hosts: web
+  become: true
+  tasks:
+    - name: adding line to 
+      lineinfile:
+        path: /tmp/testfile
+        line: '{{ item }}'
+      with_items:
+        - 'Orange'
+        - 'Apple'
+        - 'Banana' 
+        state: present
+        backup: yes
+
+
