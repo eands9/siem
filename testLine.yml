@@ -10,7 +10,6 @@
       - 'Orange'
       - 'Apple'
       - 'Banana' 
-        state: present
-        backup: yes
+        
 
 
