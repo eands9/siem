@@ -6,12 +6,13 @@
       lineinfile:
         path: /tmp/testfile
         line: '{{ item }}'
+        state: present
+        backup: yes
       with_items:
       - 'RECV_BUF_SIZE=1381600'
       - 'SEND_BUF_SIZE=1048576'
       - 'DEFAULT_SDU_SIZE=65535'
-      state: present
-      backup: yes
+      
         
 
 
