@@ -9,9 +9,8 @@
       with_items:
       - 'RECV_BUF_SIZE=1381600'
       - 'SEND_BUF_SIZE=1048576'
-      - 'DEFAULT_SDU_SIZE=65535' 
-        state: present
-        backup: yes
+      - 'DEFAULT_SDU_SIZE=65535'
+        
         
 
 
