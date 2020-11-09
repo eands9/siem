@@ -1,0 +1,28 @@
+- name: add a line
+  hosts: web
+  become: true
+  tasks:
+    - name: adding line RECV_BUF_SIZE=1381600 
+      lineinfile:
+        path: /tmp/testfile
+        regexp: '^RECV_BUF_SIZE'
+        line: 'RECV_BUF_SIZE=1381600'
+        state: present
+        backup: yes
+    - name: adding line SEND_BUF_SIZE=1048576 
+      lineinfile:
+        path: /tmp/testfile
+        regexp: '^SEND_BUF_SIZE'
+        line: 'SEND_BUF_SIZE=1048576'
+        state: present
+        backup: yes
+    - name: adding line DEFAULT_SDU_SIZE=65535 
+      lineinfile:
+        path: /tmp/testfile
+        regexp: '^DEFAULT_SDU_SIZE'
+        line: 'DEFAULT_SDU_SIZE=65535'
+        state: present
+        backup: yes
+
+      
+
