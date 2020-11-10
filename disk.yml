@@ -23,4 +23,15 @@
       that: mount.size_available > mount.size_total|float * 0.2                                                                         
       msg: Disk space is near full!                                                                         
     vars:                                                                                                                                         
-      mount: "{{ ansible_mounts | first }}"      
+      mount: "{{ ansible_mounts | first }}" 
+  - name: test for available disk space
+    assert:
+    that: 
+    - not {{ item.mount == '{{mountname}}' and ( item.size_available < 
+    item.size_total - ( item.size_total|float * 0.7 ) ) }}
+    with_items: '{{ansible_mounts}}'
+    ignore_errors: yes
+    register: disk_free
+  - name: Fail the play
+    fail: msg="disk space has reached 70% threshold"
+    when: disk_free|failed     
