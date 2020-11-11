@@ -2,6 +2,11 @@
   hosts: web
   become: true
   tasks:
+  - name: Show only / Mount info
+    debug:
+      msg: "{{ item.mount }} - {{ item.device }} - {{ item.size_total }}"
+    when: item.mount == '/'
+    loop: "{{ ansible_facts.mounts }}"
   - name: Check and set fact if / mount point exists
     set_fact:
       usr_mount_exist: true
