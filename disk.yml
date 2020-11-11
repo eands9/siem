@@ -6,8 +6,7 @@
     debug: msg="{{ ((mount.size_total - mount.size_available) / 1000000000) |  round(1,'common') }}GB of {{ (mount.size_total / 1000000000)|round(
            1, 'common') }}GB ({{ (100 * ( (mount.size_total - mount.size_available) / mount.size_available)) | round(1, 'common')}}%)"                     
     vars:                                                                                                                                         
-      mount: "{{ ansible_mounts | first }}"                                                                                                       
-      tags: disk                                                                                                                                                 
+      mount: "{{ ansible_mounts | first }}"                                                                                                                                                                                                                                                        
   - name: ensure at least 20% free                                                                                               
     assert:                                                                                                                                       
       that: mount.size_available > mount.size_total|float * 0.2                                                                         
