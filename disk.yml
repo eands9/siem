@@ -2,19 +2,15 @@
   hosts: web
   become: true
   tasks:
-  - name: Debug
-    debug:
-      msg: "{{ansible_mounts[1]['size_available']}}"
-  - name: Gather info for /boot
-    set_fact:
-      boot_space: "{{ansible_mounts[1]['size_available']/1024}}"
-    with_items: "{{ansible_mounts}}"
-    when: "{{item.mount == '/boot'}}"
-  - debug: var=boot_space                                                                                                                                                                                                                                                                                  
+  - name: show disk space                                                                                                                         
+    debug: msg="{{ ((mount.size_total - mount.size_available) / 1000000000) |  round(1,'common') }}GB of {{ (mount.size_total / 1000000000)|round(
+           1, 'common') }}GB ({{ (100 * ( (mount.size_total - mount.size_available) / mount.size_available)) | round(1, 'common')}}%)"                     
+    vars:                                                                                                                                         
+      mount: "{{ ansible_mounts | first }}"                                                                                                       
+  tags: disk                                                                                                                                                 
   - name: ensure at least 20% free                                                                                               
     assert:                                                                                                                                       
       that: mount.size_available > mount.size_total|float * 0.2                                                                         
       msg: Disk space is near full!                                                                         
     vars:                                                                                                                                         
-      mount: "{{ ansible_mounts | first }}" 
-  
+      mount: "{{ ansible_mounts | first }}"    
