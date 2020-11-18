@@ -1,0 +1,9 @@
+- name: add a line
+  hosts: web1
+  become: true
+  tasks:
+  - name: Show only / Mount info
+    debug:
+      msg: "{{ item.mount }} - {{ item.device }} - {{ item.size_total }}"
+    when: item.mount == '/boot'
+    loop: "{{ ansible_facts.mounts }}"
