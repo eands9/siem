@@ -2,16 +2,29 @@
 - name: Ansible Variable Example Playbook
   hosts: web1
   tasks:
-  - name: show disk space                                                                                                                         
+  - name: show disk space 1st mount                                                                                                                   
     debug: msg="{{ ((mount.size_total - mount.size_available) / 1000000000) |  round(1,'common') }}GB of {{ (mount.size_total / 1000000000)|round(
            1, 'common') }}GB ({{ (100 * ( (mount.size_total - mount.size_available) / mount.size_available)) | round(1, 'common')}}%)"                     
     vars:                                                                                                                                         
       mount: "{{ ansible_mounts | first }}"                                                                                                       
     tags: disk                                                                                                                                    
                                                                                                                                                 
-  - name: ensure at least 20% free                                                                                               
+  - name: ensure at least 20% free  1st mount                                                                                           
     assert:                                                                                                                                       
       that: mount.size_available > mount.size_total|float * 0.2                                                                         
       msg: Disk space is near full!                                                                         
     vars:                                                                                                                                         
       mount: "{{ ansible_mounts | first }}"      
+  - name: show disk space                                                                                                                         
+    debug: msg="{{ ((mount.size_total - mount.size_available) / 1000000000) |  round(1,'common') }}GB of {{ (mount.size_total / 1000000000)|round(
+           1, 'common') }}GB ({{ (100 * ( (mount.size_total - mount.size_available) / mount.size_available)) | round(1, 'common')}}%)"                     
+    vars:                                                                                                                                         
+      mount: "{{ ansible_mounts | second }}"                                                                                                       
+    tags: disk                                                                                                                                    
+                                                                                                                                                
+  - name: ensure at least 20% free  2 mount                                                                                             
+    assert:                                                                                                                                       
+      that: mount.size_available > mount.size_total|float * 0.2                                                                         
+      msg: Disk space is near full!                                                                         
+    vars:                                                                                                                                         
+      mount: "{{ ansible_mounts | second }}"      
