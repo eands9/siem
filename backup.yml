@@ -1,0 +1,26 @@
+- name: add a line
+  hosts: web1
+  become: true
+  tasks:
+  - name: Ansible copy directory to the remote server
+    copy:
+      src:/Users/mdtutorials2/Documents/Ansible/copy_dir_ex
+      dest:/Users/mdtutorials2/Documents/Ansible/tmp
+      backup: yes
+  - name: Ansible copy files remote to remote
+    copy:
+      src: /tmp/hello6
+      dest: /etc
+      remote_src: yes
+  - name: Mount
+    mount:
+        path: /tmp/rohan
+        src: /etc
+        opts: bind
+        fstype: none
+        state: mounted
+
+  - name: Unmount
+    mount:
+        path: /tmp/rohan
+        state: absent
