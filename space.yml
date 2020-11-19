@@ -14,4 +14,7 @@
       that: mount.size_available > mount.size_total|float * 0.2                                                                         
       msg: Disk space is near full!                                                                         
     vars:                                                                                                                                         
-      mount: "{{ ansible_mounts | first }}"      
+      mount: "{{ ansible_mounts | first }}"  
+
+  - debug:
+    msg: "{{ ansible_mounts|json_query('[?mount == `/`].size_available') }}"    
