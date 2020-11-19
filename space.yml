@@ -17,4 +17,4 @@
       mount: "{{ ansible_mounts | first }}"  
 
   - debug:
-    msg: "{{ ansible_mounts|json_query('[?mount == `/`].size_available') }}"    
+      msg: "{{ ansible_mounts|json_query('[?mount == `/`].size_available') }}"    
