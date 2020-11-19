@@ -1,0 +1,16 @@
+- set_fact:
+        my_web: "{{ my_web|default([]) +
+                     [ansible_mounts|
+                      selectattr('device', 'match', my_regex)|
+                      list|
+                      json_query(my_query)]|first }}"
+      loop: "{{ my_devices }}"
+      vars:
+        my_regex: '^(.*){{ item }}(.*)$'
+        my_query: '[].[device, size_total, size_available]'
+
+    - debug:
+        msg: "web: {{ item.0 }}
+              size[MB]: {{ (item.1|int / 1000000)|int }}
+              free[MB]: {{ (item.2|int / 1000000)|int }}"
+      loop: "{{ my_web }}"
