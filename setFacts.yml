@@ -1,16 +1,20 @@
-- set_fact:
+- name: web servers
+  hosts: web
+  become: true
+  tasks: 
+  - set_fact:
         my_web: "{{ my_web|default([]) +
                      [ansible_mounts|
                       selectattr('device', 'match', my_regex)|
                       list|
                       json_query(my_query)]|first }}"
-      loop: "{{ my_devices }}"
-      vars:
-        my_regex: '^(.*){{ item }}(.*)$'
-        my_query: '[].[device, size_total, size_available]'
+    loop: "{{ my_devices }}"
+        vars:
+          my_regex: '^(.*){{ item }}(.*)$'
+          my_query: '[].[device, size_total, size_available]'
 
-    - debug:
+  - debug:
         msg: "web: {{ item.0 }}
               size[MB]: {{ (item.1|int / 1000000)|int }}
               free[MB]: {{ (item.2|int / 1000000)|int }}"
-      loop: "{{ my_web }}"
+    loop: "{{ my_web }}"
