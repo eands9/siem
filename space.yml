@@ -15,12 +15,12 @@
       msg: Disk space is near full!                                                                         
     vars:                                                                                                                                         
       mount: "{{ ansible_mounts | first }}"  
-  - name: Mount Point {{item.mount}} 
+  - name: Mount Point /
     debug:
       msg: "{{ ansible_mounts|json_query('[?mount == `/`].size_available') }}"    
-  - name: Mount Point {{item.mount}} 
+  - name: Mount Point /boot
     debug:
       msg: "{{ ansible_mounts|json_query('[?mount == `/boot`].size_available') }}"  
-  - name: Mount Point {{item.mount}} 
+  - name: Mount Point /home 
     debug:
       msg: "{{ ansible_mounts|json_query('[?mount == `/home`].size_available') }}"     
