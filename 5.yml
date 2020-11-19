@@ -27,3 +27,12 @@
     # Accessing the Second Element of the list
     - debug:
         msg: "{{ansible_all_ipv4_addresses[1]}}"
+    
+    # Print the Dictionary
+    - debug:
+        msg: "{{ansible_mounts}}"
+
+    # Parsing through Variable Dictionary
+    - debug:
+        msg: "Mount Point {{item.mount}} is at {{item.block_used/item.block_total*100}} percent "
+      loop: "{{ansible_mounts}}"
