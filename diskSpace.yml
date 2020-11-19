@@ -5,9 +5,8 @@
   - name: show disk space 1st mount                                                                                                                   
     debug: msg="{{ ((mount.size_total - mount.size_available) / 1000000000) |  round(1,'common') }}GB of {{ (mount.size_total / 1000000000)|round(
            1, 'common') }}GB ({{ (100 * ( (mount.size_total - mount.size_available) / mount.size_available)) | round(1, 'common')}}%)"                     
-    vars:                                                                                                                                         
-      mount: "{{ ansible_mounts | first }}"                                                                                                       
-     loop: "{{ansible_mounts}}"                                                                                                                              
+                                                                                                           
+    loop: "{{ansible_mounts}}"                                                                                                                              
                                                                                                                                                 
   - name: ensure at least 20% free  1st mount                                                                                           
     assert:                                                                                                                                       
