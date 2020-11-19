@@ -1,13 +1,8 @@
 - name: web servers
-  hosts: web
+  hosts: web1
   become: true
   tasks:                                                
                                                                                                                         
   - debug:                                                                                                                
       msg: "disk usage {{ disk_usage_s }} of total {{ disk_total_s }} ({{ disk_usage_ratio_s }}) (should be within limit {{ disk_limit_ratio_s }})"
-                                                                                                                        
-  - name:                                                                                                                 
-    assert:                                                                                                               
-      that: ( (disk_usage|float)/mount.size_total ) < disk_limit|float                                                    
-      msg: "Disk usage {{ disk_usage_ratio_s }} exceeds {{ disk_limit_ratio_s }}"
-    any_errors_fatal: true
+                                                                                                                      
