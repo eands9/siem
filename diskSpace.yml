@@ -7,7 +7,7 @@
            1, 'common') }}GB ({{ (100 * ( (mount.size_total - mount.size_available) / mount.size_available)) | round(1, 'common')}}%)"                     
     vars:                                                                                                                                         
       mount: "{{ ansible_mounts | first }}"                                                                                                       
-    tags: disk                                                                                                                                    
+     loop: "{{ansible_mounts}}"                                                                                                                              
                                                                                                                                                 
   - name: ensure at least 20% free  1st mount                                                                                           
     assert:                                                                                                                                       
