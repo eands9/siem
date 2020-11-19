@@ -20,5 +20,5 @@
       msg: "{{ ansible_mounts|json_query('[?mount == `/`].size_available') }}"    
   - debug:
       msg: "{{ ansible_mounts|json_query('[?mount == `/boot`].size_available') }}"  
-   - debug:
+  - debug:
       msg: "{{ ansible_mounts|json_query('[?mount == `/home`].size_available') }}"     
