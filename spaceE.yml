@@ -10,12 +10,4 @@
     with_items: "{{ansible_mounts}}"
     when: "{{item.mount == '/boot'}}"
   - debug: var=boot_space
-  - name: Debug
-    debug:
-      msg: "{{ansible_mounts[2]['size_available']}}"
-  - name: Gather info for /boot
-    set_fact:
-      boot_space: "{{ansible_mounts[2]['size_available']/1024}}"
-    with_items: "{{ansible_mounts}}"
-    when: "{{item.mount == '/home'}}"
-  - debug: var=boot_space
+  
