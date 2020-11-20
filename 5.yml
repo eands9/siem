@@ -32,11 +32,7 @@
     - debug:
         msg: "{{ansible_mounts}}"
 
-    - debug:
-        msg: "{{ansible_mounts.mount}}"    
-
     # Parsing through Variable Dictionary
     - debug:
         msg: "Mount Point {{item.mount}} is at {{item.block_used/item.block_total*100}} percent "
       loop: "{{ansible_mounts}}"
-
