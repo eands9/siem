@@ -11,5 +11,5 @@
         debug:
         var: "{{ item }}" 
         loop:
-        stdout_lines
+        - stdout_lines
         
