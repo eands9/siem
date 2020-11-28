@@ -7,3 +7,10 @@
       msg: "{{ item.mount }} - {{ item.device }} - {{ item.size_total }}"
     when: item.mount == '/boot'
     loop: "{{ ansible_facts.mounts }}"
+  - name: testing 2
+    debug:
+      msg: "{{ item.mount }}"
+  - name: testing
+    debug:
+      msg: "{{ item.device }}"
+    
