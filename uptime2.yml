@@ -9,6 +9,7 @@
         command: free -m
         register: free_var
         debug:
-        var: "{{ item }}" loop:
+        var: "{{ item }}" 
+        loop:
         stdout_lines
         stdout_lines
