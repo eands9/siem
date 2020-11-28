@@ -5,7 +5,7 @@
       - name: To check the uptime of remote host 
         command: uptime
         register: uptime_var
-      - name: To check free memory on remote host shell: 
+      - name: To check free memory on remote host shell
         command: free -m
         register: free_var
         debug:
