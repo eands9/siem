@@ -1,0 +1,14 @@
+---
+- name: Dictionary playbook example
+  hosts: localhost
+  tasks:
+    - name: Create and Add items to dictionary
+      set_fact: 
+          userdata: "{{ userdata | default([]) + [{ 'Name' : item.Name, 'Email' : item.Email, 'Location' : item.Location }] }}"
+      with_items:
+        - { 'Name': 'Sarav' , 'Email': 'sarav@gritfy.com', 'Location': 'Chennai'}
+        - { 'Name': 'Richa' , 'Email': 'richa@gritfy.com', 'Location': 'Chennai'}
+        - { 'Name': 'Hanu' , 'Email': 'hanu@gritfy.com', 'Location': 'Hyderabad'}
+
+    -  name: Display the Dictionary
+       debug: var=userdata
