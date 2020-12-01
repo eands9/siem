@@ -9,4 +9,4 @@
       register: datecmd
       tags: datecmd
 
-    - debug: msg="{{datecmd.stdout}}"
+    - debug: msg="{{datecmd}}"
