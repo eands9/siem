@@ -3,9 +3,9 @@
   gather_facts: False
   connection: local
   tasks:
-    - shell: echo "hello"
-      register: result
-
     - mail:
-        subject: 'System {{ ansible_hostname }} has been successfully provisioned.'
-      delegate_to: localhost
+        host: relay.megastar.com
+        port: 25
+        to: Siem <shernandez@take3tech.com>
+        subject: Ansible-report
+        body: 'System {{ ansible_hostname }} has been successfully provisioned.'
