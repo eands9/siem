@@ -8,4 +8,4 @@
         port: 25
         to: Siem <shernandez@take3tech.com>
         subject: Ansible-report
-        body: 'System {{ ansible_hostname }} has been successfully provisioned.'
+        body: 'this is a test'
