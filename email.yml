@@ -1,0 +1,4 @@
+# Example playbook sending mail to root
+- mail:
+    subject: 'System {{ ansible_hostname }} has been successfully provisioned.'
+  delegate_to: localhost
