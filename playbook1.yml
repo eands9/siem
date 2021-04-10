@@ -1,6 +1,6 @@
 ---
 - name: my first play
-  hosts: web
+  hosts: web1
   tasks: 
     - name: ping
       ping:
